@@ -62,3 +62,26 @@ void pall(stack_t **stack, unsigned int n __attribute__((unused)))
 		head = head->prev;
 	}
 }
+
+/**
+ * pall - the pint function
+ * @stack : the stack
+ * @n : line lunber
+*/
+
+void pint(stack_t **head, unsigned int counter)
+{
+	stack_t *temp = *head;
+
+	if (*head == NULL)
+	{
+		fprintf(stderr, "L%u: can't pint, stack empty\n", counter);
+		free_fs();
+		free_lt();
+		exit(EXIT_FAILURE);
+	}
+	while (temp->next != NULL)
+		temp = temp->next;
+	
+	printf("%d\n", temp->n);
+}
