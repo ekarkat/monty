@@ -16,12 +16,12 @@ void push(stack_t **stack, unsigned int n)
 		free_fs();
 		exit(EXIT_FAILURE);
 	}
-
 	if (mobe.token[1] == NULL || check_int(mobe.token[1]) == 1)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", n);
 		free_lt();
 		free_fs();
+		free(new);
 		exit(EXIT_FAILURE);
 	}
 	new->n = atoi(mobe.token[1]);
