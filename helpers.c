@@ -72,7 +72,7 @@ void free_fs(void)
 	}
 	if (mobe.stak != NULL)
 	{
-		free(mobe.stak);
+		free_stack(mobe.stak);
 	}
 }
 
@@ -95,3 +95,4 @@ void fill_list(char *lin, char **token, FILE *fil, stack_t *stak)
 	mobe.stak = stak;
 	mobe.token = token;
 }
+

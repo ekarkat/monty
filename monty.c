@@ -42,6 +42,7 @@ int main(int argc __attribute__((unused)), char **argv)
 		}
 		if (check_empty(line) == 0)
 		{
+			free_lt();
 			line_number++;
 			continue;
 		}

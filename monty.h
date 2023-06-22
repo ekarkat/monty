@@ -75,5 +75,6 @@ int check_int(char *str);
 void free_lt(void);
 void free_fs(void);
 void fill_list(char *lin, char **token, FILE *fil, stack_t *stak);
+void free_stack(stack_t *head);
 
 #endif
