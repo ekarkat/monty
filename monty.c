@@ -1,8 +1,14 @@
 #include "main.h"
 #include <fcntl.h>
-#include <stdio.h>
 
-int main(int argc __attribute__((unused)), char **argv) 
+/**
+ * main - main function
+ * @argc : argc
+ * @argv : argv
+ * Return: return error
+*/
+
+int main(int argc __attribute__((unused)), char **argv)
 {
 	FILE *file = fopen(argv[1], "r");
 	char *line = NULL;
@@ -13,16 +19,20 @@ int main(int argc __attribute__((unused)), char **argv)
 
 	while (state)
 	{
-		getline(&line, &len, file);
+		ssize_t tst = getline(&line, &len, file);
 
+		if (tst == -1)
+		{
+			exit(EXIT_SUCCESS);
+		}
 		if (check_empty(line) == 0)
 		{
 			line_number++;
 			continue;
 		}
-		execute(&stack, line, line_number);		
+		execute(&stack, line, line_number);
 		line_number++;
 	}
-	
-	return 0;
+
+	return (0);
 }
