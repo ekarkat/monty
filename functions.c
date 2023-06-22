@@ -1,4 +1,4 @@
-#include "main.h"
+#include "monty.h"
 /**
  * push - the push function
  * @stack : the stack
