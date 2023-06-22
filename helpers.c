@@ -21,19 +21,7 @@ int check_empty(char *line)
 	return (ck);
 }
 
-/**
- * free_tokens - free a token
-*/
-void free_tokens(void)
-{
-	int i = 0;
 
-	while (tokens[i] != NULL)
-	{
-		free(tokens[i]);
-		i++;
-	}
-}
 
 /**
  * check_int - check if a string is consist of integers only
@@ -56,4 +44,23 @@ int check_int(char *str)
 	}
 	return (0);
 
+}
+
+/**
+ * free_list - add node at the end
+ * @head : the head of the list
+*/
+
+void free_list(stack_t *head)
+{
+	stack_t *temp;
+
+	if (head == NULL)
+		return;
+	while (temp != NULL)
+	{
+		temp = head->next;
+		free(head);
+		head = temp;
+	}
 }

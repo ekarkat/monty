@@ -16,6 +16,11 @@ int main(int argc __attribute__((unused)), char **argv)
 	int line_number = 1;
 	stack_t *stack = NULL;
 
+	if (argc != 2)
+	{
+		fprintf(stderr, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
 	while (state)
 	{
 		char *line = malloc(1024);
@@ -23,6 +28,11 @@ int main(int argc __attribute__((unused)), char **argv)
 
 		if (tst == -1)
 		{
+			fclose(file);
+			free(line);
+			free_list(stack);
+			if (tokens != NULL)
+				free(tokens);
 			exit(EXIT_SUCCESS);
 		}
 		if (check_empty(line) == 0)

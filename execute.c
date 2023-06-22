@@ -42,6 +42,8 @@ int execute(stack_t **stack, char *line, int line_number)
 	if (tokens == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
+		free(tokens);
+		free_list(*stack);
 		exit(EXIT_FAILURE);
 	}
 
@@ -49,8 +51,8 @@ int execute(stack_t **stack, char *line, int line_number)
 	if (op_func == NULL)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, tokens[0]);
+		free(tokens);
 		exit(EXIT_FAILURE);
-		return (0);
 	}
 	op_func(stack, line_number);
 	return (0);

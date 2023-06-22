@@ -1,34 +1,6 @@
 #include "monty.h"
 
 /**
- * _strdup - make a copy of a string
- * @s: the string
- * Return: return a string
-*/
-char *_strdup(char *s)
-{
-	char *copy = NULL;
-	int len;
-
-	if (!s)
-		return (NULL);
-
-	len = strlen(s);
-
-	copy = malloc(sizeof(char) * len + 1);
-
-	if (!copy)
-	{
-		perror("malloc() failed");
-		return (NULL);
-	}
-
-	strcpy(copy, s);
-
-	/*s[len] = '\0';*/
-	return (copy);
-}
-/**
  * tokenize - toknize input
  * @input : the input
  * @delimiter : the delimiter
@@ -36,38 +8,10 @@ char *_strdup(char *s)
 */
 char **tokenize(char *input, char *delimiter)
 {
-	char *input_copy, *token;
 	char **tokens;
-	int num_tokens = 0, i = 0;
 
-	input_copy = _strdup(input);
-	if (!input_copy)
-	{
-		fprintf(stderr, "Error: malloc failed\n");
-		exit(EXIT_FAILURE);
-	}
-	token = strtok(input, delimiter);
-	while (token)
-	{
-		num_tokens++;
-		token = strtok(NULL, delimiter);
-	}
-	num_tokens++;
-	tokens = malloc(sizeof(char *) * num_tokens);
-	if (!tokens)
-	{
-		fprintf(stderr, "Error: malloc failed\n");
-		exit(EXIT_FAILURE);
-	}
-	token = strtok(input_copy, delimiter);
-	while (token)
-	{
-		tokens[i] = _strdup(token);
-
-		token = strtok(NULL, delimiter);
-		i++;
-	}
-	tokens[i] = NULL;
-	free(input_copy);
+	tokens = malloc(100);
+	tokens[0] = strtok(input, delimiter);
+	tokens[1] = strtok(NULL, delimiter);
 	return (tokens);
 }

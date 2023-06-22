@@ -51,5 +51,6 @@ int execute(stack_t **stack, char *line, int line_number);
 char **tokenize(char *input, char *delimiter);
 void free_tokens(void);
 int check_int(char *str);
+void free_list(stack_t *head);
 
 #endif
