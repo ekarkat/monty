@@ -12,15 +12,19 @@ void push(stack_t **stack, unsigned int n)
 	if (new == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
+		free_lt();
+		free_fs();
 		exit(EXIT_FAILURE);
 	}
 
-	if (tokens[1] == NULL || check_int(tokens[1]) == 1)
+	if (mobe.token[1] == NULL || check_int(mobe.token[1]) == 1)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", n);
+		free_lt();
+		free_fs();
 		exit(EXIT_FAILURE);
 	}
-	new->n = atoi(tokens[1]);
+	new->n = atoi(mobe.token[1]);
 	new->next = NULL;
 	new->prev = NULL;
 

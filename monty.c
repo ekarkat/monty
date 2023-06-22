@@ -1,5 +1,6 @@
 #include "monty.h"
-#include <fcntl.h>
+
+ltfs_t mobe = {NULL, NULL, NULL, NULL};
 
 /**
  * main - main function
@@ -10,8 +11,9 @@
 
 int main(int argc __attribute__((unused)), char **argv)
 {
+	char *line;
 	FILE *file = fopen(argv[1], "r");
-	size_t len = 1000;
+	size_t len = 0;
 	bool state = true;
 	int line_number = 1;
 	stack_t *stack = NULL;
@@ -29,16 +31,13 @@ int main(int argc __attribute__((unused)), char **argv)
 	}
 	while (state)
 	{
-		char *line = malloc(1024);
-
+		line = NULL;
 		tst = getline(&line, &len, file);
+		fill_list(line, NULL, file, stack);
 		if (tst == -1)
 		{
-			fclose(file);
-			free(line);
-			free_list(stack);
-			if (tokens != NULL)
-				free(tokens);
+			free_fs();
+			free_lt();
 			exit(EXIT_SUCCESS);
 		}
 		if (check_empty(line) == 0)

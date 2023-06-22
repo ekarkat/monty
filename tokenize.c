@@ -8,10 +8,10 @@
 */
 char **tokenize(char *input, char *delimiter)
 {
-	char **tokens;
+	char **tokins;
 
-	tokens = malloc(100);
-	tokens[0] = strtok(input, delimiter);
-	tokens[1] = strtok(NULL, delimiter);
-	return (tokens);
+	tokins = malloc(100);
+	tokins[0] = strtok(input, delimiter);
+	tokins[1] = strtok(NULL, delimiter);
+	return (tokins);
 }

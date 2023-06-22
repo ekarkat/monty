@@ -1,4 +1,5 @@
 #include "monty.h"
+
 /**
  * check_empty - check if a line is empty
  * @line : ligne
@@ -20,8 +21,6 @@ int check_empty(char *line)
 	}
 	return (ck);
 }
-
-
 
 /**
  * check_int - check if a string is consist of integers only
@@ -45,22 +44,54 @@ int check_int(char *str)
 	return (0);
 
 }
-
 /**
- * free_list - add node at the end
- * @head : the head of the list
+ * free_lt - free line and token
 */
 
-void free_list(stack_t *head)
+void free_lt(void)
 {
-	stack_t *temp;
-
-	if (head == NULL)
-		return;
-	while (temp != NULL)
+	if (mobe.lin != NULL)
 	{
-		temp = head->next;
-		free(head);
-		head = temp;
+		free(mobe.lin);
 	}
+	if (mobe.token != NULL)
+	{
+		free(mobe.token);
+	}
+}
+
+/**
+ * free_fs - free file and stack
+*/
+
+void free_fs(void)
+{
+	if (mobe.fil != NULL)
+	{
+		fclose(mobe.fil);
+	}
+	if (mobe.stak != NULL)
+	{
+		free(mobe.stak);
+	}
+}
+
+/**
+ * fill_list - fill a alist
+ * @lin : line
+ * @token : token
+ * @stak : the stack
+ * @fil : the file
+*/
+
+void fill_list(char *lin, char **token, FILE *fil, stack_t *stak)
+{
+	(void)lin;
+	(void)token;
+	(void)fil;
+	(void)stak;
+	mobe.fil = fil;
+	mobe.lin = lin;
+	mobe.stak = stak;
+	mobe.token = token;
 }

@@ -1,7 +1,5 @@
 #include "monty.h"
 
-char **tokens = NULL;
-
 /**
  * get_op - function pointer
  * @opcode : the opening code
@@ -37,23 +35,25 @@ int execute(stack_t **stack, char *line, int line_number)
 {
 	void (*op_func)(stack_t**, unsigned int);
 
-	tokens = tokenize(line, " \n\t");
-
-	if (tokens == NULL)
+	mobe.token = tokenize(line, " \n\t");
+	if (mobe.token == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		free(tokens);
-		free_list(*stack);
+		free_lt();
+		free_fs();
 		exit(EXIT_FAILURE);
 	}
 
-	op_func = get_op(tokens[0]);
+	op_func = get_op(mobe.token[0]);
 	if (op_func == NULL)
 	{
-		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, tokens[0]);
-		free(tokens);
+		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, mobe.token[0]);
+		free_lt();
+		free_fs();
 		exit(EXIT_FAILURE);
 	}
 	op_func(stack, line_number);
+	free_lt();
+
 	return (0);
 }
