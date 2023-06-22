@@ -21,11 +21,15 @@ int main(int argc __attribute__((unused)), char **argv)
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
+	if (!file)
+	{
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+		exit(EXIT_FAILURE);
+	}
 	while (state)
 	{
 		char *line = malloc(1024);
 		ssize_t tst = getline(&line, &len, file);
-
 		if (tst == -1)
 		{
 			fclose(file);
@@ -43,6 +47,5 @@ int main(int argc __attribute__((unused)), char **argv)
 		execute(&stack, line, line_number);
 		line_number++;
 	}
-
 	return (0);
 }
