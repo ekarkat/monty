@@ -76,6 +76,6 @@ void free_lt(void);
 void free_fs(void);
 void fill_list(char *lin, char **token, FILE *fil, stack_t *stak);
 void free_stack(stack_t *head);
-void pint(stack_t **head, unsigned int counter);
-
+void pint(stack_t **stack, unsigned int counter);
+void pop(stack_t **stack, unsigned int counter);
 #endif

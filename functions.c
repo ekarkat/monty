@@ -64,16 +64,16 @@ void pall(stack_t **stack, unsigned int n __attribute__((unused)))
 }
 
 /**
- * pall - the pint function
+ * pint - the pint function
  * @stack : the stack
- * @n : line lunber
+ * @counter : line lunber
 */
 
-void pint(stack_t **head, unsigned int counter)
+void pint(stack_t **stack, unsigned int counter)
 {
-	stack_t *temp = *head;
+	stack_t *temp = *stack;
 
-	if (*head == NULL)
+	if (*stack == NULL)
 	{
 		fprintf(stderr, "L%u: can't pint, stack empty\n", counter);
 		free_fs();
@@ -82,6 +82,42 @@ void pint(stack_t **head, unsigned int counter)
 	}
 	while (temp->next != NULL)
 		temp = temp->next;
-	
+
 	printf("%d\n", temp->n);
+}
+
+/**
+ * pop - prints the top
+ * @stack: stack head
+ * @counter: line_number
+ * Return: no return
+*/
+void pop(stack_t **stack, unsigned int counter)
+{
+	stack_t *head;
+	stack_t *temp = *stack;
+
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", counter);
+		free_fs();
+		free_lt();
+		exit(EXIT_FAILURE);
+	}
+
+	if (temp->next == NULL)
+	{
+		free(temp);
+		temp = NULL;
+		*stack = NULL;
+		stack = NULL;
+		return;
+	}
+
+	while (temp->next != NULL)
+		temp = temp->next;
+
+	head = temp->prev;
+	head->next = NULL;
+	free(temp);
 }

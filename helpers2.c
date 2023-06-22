@@ -15,4 +15,5 @@ void free_stack(stack_t *head)
 		free(head);
 		head = temp;
 	}
+	head = NULL;
 }
