@@ -65,3 +65,16 @@ void add(stack_t **stack, unsigned int counter)
 	last->prev->next = NULL;
 	free(last);
 }
+
+/**
+  *nop - nothing
+  *@stack: stack head
+  *@counter: line_number
+  *Return: no return
+ */
+void nop(stack_t **stack, unsigned int counter)
+{
+	(void)counter;
+	(void)stack;
+	return;
+}
