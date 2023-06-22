@@ -10,6 +10,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
+/* global */
 extern char **tokens;
 
 
@@ -48,7 +49,6 @@ void pall(stack_t **stack, unsigned int n);
 int check_empty(char *line);
 int execute(stack_t **stack, char *line, int line_number);
 char **tokenize(char *input, char *delimiter);
-void printtok(void);
 void free_tokens(void);
 int check_int(char *str);
 

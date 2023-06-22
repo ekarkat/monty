@@ -22,15 +22,6 @@ int check_empty(char *line)
 }
 
 /**
- * printtok - print a token
-*/
-
-void printtok(void)
-{
-	printf("%s\n", tokens[0]);
-}
-
-/**
  * free_tokens - free a token
 */
 void free_tokens(void)

@@ -11,17 +11,17 @@
 int main(int argc __attribute__((unused)), char **argv)
 {
 	FILE *file = fopen(argv[1], "r");
-	char *line = NULL;
-	size_t len = 0;
+	size_t len = 1000;
 	bool state = true;
 	int line_number = 1;
 	stack_t *stack = NULL;
 
 	while (state)
 	{
-		ssize_t tst = getline(&line, &len, file);
+		char *line = malloc(1024);
+		char *tst = fgets(line, len, file);
 
-		if (tst == -1)
+		if (tst == NULL)
 		{
 			exit(EXIT_SUCCESS);
 		}
