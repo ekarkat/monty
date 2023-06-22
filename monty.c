@@ -1,8 +1,10 @@
 #include "main.h"
+#include <fcntl.h>
 
 
-int main(int argc __attribute__((unused)), char **argv __attribute__((unused))) 
+int main(int argc __attribute__((unused)), char **argv) 
 {
+	FILE *file = fopen(argv[1], "r");
 	char *line = NULL;
 	size_t len = 0;
 	bool state = true;
@@ -11,7 +13,11 @@ int main(int argc __attribute__((unused)), char **argv __attribute__((unused)))
 
 	while (state)
 	{
-		_getline(&line, &len, stdin);
+		ssize_t tst = getline(&line, &len, file);
+		if (tst == -1)
+		{
+			exit(EXIT_SUCCESS);
+		}
 		if (check_empty(line) == 0)
 		{
 			line_number++;
@@ -19,8 +25,6 @@ int main(int argc __attribute__((unused)), char **argv __attribute__((unused)))
 		}
 		execute(&stack, line, line_number);		
 		line_number++;
-		free(line);
-		free_tokens();
 	}
 	
 	return 0;
