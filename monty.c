@@ -15,6 +15,7 @@ int main(int argc __attribute__((unused)), char **argv)
 	bool state = true;
 	int line_number = 1;
 	stack_t *stack = NULL;
+	ssize_t tst;
 
 	if (argc != 2)
 	{
@@ -29,7 +30,8 @@ int main(int argc __attribute__((unused)), char **argv)
 	while (state)
 	{
 		char *line = malloc(1024);
-		ssize_t tst = getline(&line, &len, file);
+
+		tst = getline(&line, &len, file);
 		if (tst == -1)
 		{
 			fclose(file);
