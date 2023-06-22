@@ -1,6 +1,6 @@
 #include "main.h"
 #include <fcntl.h>
-
+#include <stdio.h>
 
 int main(int argc __attribute__((unused)), char **argv) 
 {
@@ -13,11 +13,8 @@ int main(int argc __attribute__((unused)), char **argv)
 
 	while (state)
 	{
-		ssize_t tst = getline(&line, &len, file);
-		if (tst == -1)
-		{
-			exit(EXIT_SUCCESS);
-		}
+		getline(&line, &len, file);
+
 		if (check_empty(line) == 0)
 		{
 			line_number++;

@@ -45,7 +45,7 @@ typedef struct instruction_s
 
 void push (stack_t **stack, unsigned int n);
 void pall (stack_t **stack, unsigned int n);
-ssize_t _getline(char **line, size_t *n, FILE *fp);
+ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 int check_empty(char *line);
 int execute(stack_t **stack, char *line, int line_number);
 char **tokenize(char *input, char *delimiter);
