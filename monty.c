@@ -19,9 +19,9 @@ int main(int argc __attribute__((unused)), char **argv)
 	while (state)
 	{
 		char *line = malloc(1024);
-		char *tst = fgets(line, len, file);
+		ssize_t tst = getline(&line, &len, file);
 
-		if (tst == NULL)
+		if (tst == -1)
 		{
 			exit(EXIT_SUCCESS);
 		}
