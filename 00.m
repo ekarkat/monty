@@ -1,5 +1,4 @@
 push 1
-push a
-pall
-
+push 
+palls
 

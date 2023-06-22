@@ -49,6 +49,8 @@ void pall(stack_t **stack, unsigned int n __attribute__((unused)))
 {
 	stack_t *head = *stack;
 
+	if (head == NULL)
+		return;
 	while (head->next != NULL)
 	{
 		head = head->next;
