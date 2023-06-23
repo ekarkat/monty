@@ -105,7 +105,7 @@ void sub(stack_t **stack, unsigned int counter)
 	}
 	while (last->next != NULL)
 		last = last->next;
-	sum = -(last->n) + last->prev->n;
+	sum = (last->prev->n) - (last->n);
 	last->prev->n = sum;
 	last->prev->next = NULL;
 	free(last);
