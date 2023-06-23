@@ -20,6 +20,7 @@ void (*get_op(char *opcode))(stack_t**, unsigned int)
 		{"mul", mul},
 		{"mod", mod},
 		{"pchar", pchar},
+		{"pstr", pstr},
 		{NULL, NULL}
 	};
 	int i;

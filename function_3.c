@@ -102,3 +102,37 @@ void pchar(stack_t **stack, unsigned int counter)
 	}
 	printf("%c\n", temp->n);
 }
+
+/**
+ * pchar - the pint function
+ * @stack : the stack
+ * @counter : line lunber
+*/
+
+void pstr(stack_t **stack, unsigned int counter)
+{
+	stack_t *temp = *stack;
+	int n;
+	(void) counter;
+
+	if (*stack == NULL)
+	{
+		printf("\n");
+	}
+	while (temp->next != NULL)
+		temp = temp->next;
+	while (temp->prev != NULL)
+	{
+		n = temp->n;
+		if (n <= 0 || n > 127)
+		{
+			printf("\n");
+			return;
+		}
+		printf("%c", temp->n);
+		temp = temp->prev;
+	}
+	printf("\n");
+
+}
+
