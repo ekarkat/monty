@@ -112,7 +112,7 @@ void sub(stack_t **stack, unsigned int counter)
 }
 
 /**
- * div - adds the top two elements of the stack.
+ * m_div - adds the top two elements of the stack.
  * @stack: stack head
  * @counter: line_number
  * Return: no return
@@ -143,7 +143,7 @@ void m_div(stack_t **stack, unsigned int counter)
 		fprintf(stderr, "L%d: division by zero\n", counter);
 		free_lt();
 		free_fs();
-		exit(EXIT_FAILURE);		
+		exit(EXIT_FAILURE);
 	}
 	sum = last->prev->n / ((last->n));
 	last->prev->n = sum;

@@ -65,7 +65,7 @@ void mod(stack_t **stack, unsigned int counter)
 		fprintf(stderr, "L%d: division by zero\n", counter);
 		free_lt();
 		free_fs();
-		exit(EXIT_FAILURE);		
+		exit(EXIT_FAILURE);
 	}
 	sum = last->prev->n % ((last->n));
 	last->prev->n = sum;
@@ -83,6 +83,7 @@ void pchar(stack_t **stack, unsigned int counter)
 {
 	stack_t *temp = *stack;
 	int n;
+
 	if (*stack == NULL)
 	{
 		fprintf(stderr, "L%u: can't pchar, stack empty\n", counter);
@@ -98,13 +99,13 @@ void pchar(stack_t **stack, unsigned int counter)
 		fprintf(stderr, "L%u: can't pchar, value out of range\n", counter);
 		free_fs();
 		free_lt();
-		exit(EXIT_FAILURE);		
+		exit(EXIT_FAILURE);
 	}
 	printf("%c\n", temp->n);
 }
 
 /**
- * pchar - the pint function
+ * pstr - the pint function
  * @stack : the stack
  * @counter : line lunber
 */
