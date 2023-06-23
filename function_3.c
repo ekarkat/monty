@@ -116,9 +116,10 @@ void pstr(stack_t **stack, unsigned int counter)
 	int n;
 	(void) counter;
 
-	if (*stack == NULL)
+	if (*stack == NULL || stack == NULL)
 	{
 		printf("\n");
+		return;
 	}
 	while (temp->next != NULL)
 		temp = temp->next;
@@ -127,7 +128,7 @@ void pstr(stack_t **stack, unsigned int counter)
 		n = temp->n;
 		if (n <= 0 || n > 127)
 			break;
-		printf("%c", temp->n);
+		printf("%c", n);
 		temp = temp->prev;
 	}
 	printf("\n");
