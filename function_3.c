@@ -73,9 +73,25 @@ void mod(stack_t **stack, unsigned int counter)
 	free(last);
 }
 
-int check_comment(char *str)
+/**
+ * pchar - the pint function
+ * @stack : the stack
+ * @counter : line lunber
+*/
+
+void pchar(stack_t **stack, unsigned int counter)
 {
-	if (str[0] == '#')
-		return (1);
-	return (0);
+	stack_t *temp = *stack;
+
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%u: can't pchar, stack empty\n", counter);
+		free_fs();
+		free_lt();
+		exit(EXIT_FAILURE);
+	}
+	while (temp->next != NULL)
+		temp = temp->next;
+
+	printf("%c\n", temp->n);
 }
