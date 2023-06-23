@@ -138,6 +138,13 @@ void m_div(stack_t **stack, unsigned int counter)
 	}
 	while (last->next != NULL)
 		last = last->next;
+	if (last->n == 0)
+	{
+		fprintf(stderr, "L%d: division by zero\n", counter);
+		free_lt();
+		free_fs();
+		exit(EXIT_FAILURE);		
+	}
 	sum = last->prev->n / ((last->n));
 	last->prev->n = sum;
 	last->prev->next = NULL;
