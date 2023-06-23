@@ -122,18 +122,14 @@ void pstr(stack_t **stack, unsigned int counter)
 	}
 	while (temp->next != NULL)
 		temp = temp->next;
-	while (temp->prev != NULL)
+	while (temp != NULL)
 	{
 		n = temp->n;
 		if (n <= 0 || n > 127)
-		{
-			printf("\n");
-			return;
-		}
+			break;
 		printf("%c", temp->n);
 		temp = temp->prev;
 	}
 	printf("\n");
-
 }
 
