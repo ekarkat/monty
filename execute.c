@@ -52,7 +52,11 @@ int execute(stack_t **stack, char *line, int line_number)
 		free_fs();
 		exit(EXIT_FAILURE);
 	}
-
+	if (mobe.token[0][0] == '#')
+	{
+		return (0);
+	}
+	
 	op_func = get_op(mobe.token[0]);
 	if (op_func == NULL)
 	{

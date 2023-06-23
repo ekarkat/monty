@@ -72,3 +72,10 @@ void mod(stack_t **stack, unsigned int counter)
 	last->prev->next = NULL;
 	free(last);
 }
+
+int check_comment(char *str)
+{
+	if (str[0] == '#')
+		return (1);
+	return (0);
+}
