@@ -98,7 +98,7 @@ void sub(stack_t **stack, unsigned int counter)
 	}
 	if (len < 2)
 	{
-		fprintf(stderr, "L%d: can't add, stack too short\n", counter);
+		fprintf(stderr, "L%d: can't sub, stack too short\n", counter);
 		free_lt();
 		free_fs();
 		exit(EXIT_FAILURE);
@@ -131,7 +131,7 @@ void m_div(stack_t **stack, unsigned int counter)
 	}
 	if (len < 2)
 	{
-		fprintf(stderr, "L%d: can't add, stack too short\n", counter);
+		fprintf(stderr, "L%d: can't div, stack too short\n", counter);
 		free_lt();
 		free_fs();
 		exit(EXIT_FAILURE);

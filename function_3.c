@@ -20,7 +20,7 @@ void mul(stack_t **stack, unsigned int counter)
 	}
 	if (len < 2)
 	{
-		fprintf(stderr, "L%d: can't add, stack too short\n", counter);
+		fprintf(stderr, "L%d: can't mul, stack too short\n", counter);
 		free_lt();
 		free_fs();
 		exit(EXIT_FAILURE);
