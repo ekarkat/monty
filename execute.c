@@ -54,6 +54,7 @@ int execute(stack_t **stack, char *line, int line_number)
 	}
 	if (mobe.token[0][0] == '#')
 	{
+		free_lt();
 		return (0);
 	}
 	
